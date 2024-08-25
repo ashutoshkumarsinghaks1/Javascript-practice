@@ -1,0 +1,153 @@
+// CLOSURE  source @Yoshita Jain Youtube Channel
+
+//Closure
+
+/*
+function fun1() {
+  let a = 5;
+  console.log(a);
+}
+
+fun1();
+
+output: 5
+
+*/
+
+//****** */
+
+//Now Suppose we have another function fun2() iniside func1().
+
+/*
+function fun1() {
+  let a = 5;
+  console.log(a);
+
+  function fun2() {
+    let a = 6;
+    console.log(a);
+  }
+  fun2();
+}
+fun1();
+
+output: 5
+        6
+*/
+//*********/
+
+//Now remove variable from function fun2() and  return fun2() and store all this in variable const abc
+
+/*
+function fun1() {
+  let a = 5;
+  console.log(a);
+
+  function fun2() {
+    console.log(a);
+  }
+  return fun2;
+}
+
+const abc = fun1();
+abc();
+
+output: 5
+        5
+
+*/
+//************* */
+
+//Now remove console.log(a) from the outer function fun1()
+
+/*
+function fun1() {
+  let a = 5;
+
+  function fun2() {
+    console.log(a);
+  }
+  return fun2;
+}
+
+const abc = fun1();
+abc();
+
+output: 5
+
+*/
+
+//*********** */
+
+/*
+function fun1() {
+  let a = 5;
+
+  function fun2() {
+    console.log(a);
+  }
+  a = 8;
+  return fun2;
+}
+
+const abc = fun1();
+abc();
+
+output: 8
+
+*/
+
+// It is returning "8" because function fun2 will return function along with its lexical environment parent environment . It will not return value of "a"it will return reference of "a" . That's why console.log(a) is returning value of a = 8 not a =5 even if it is after console.log(a). As a = 5; and a =8; is in the same parent environment.
+
+//*********** */
+
+/*
+function fun1() {
+  let a = 5;
+
+  function fun2() {
+    console.log(a);
+
+    function fun3() {
+      console.log(a);
+    }
+    fun3();
+  }
+  a = 8;
+  return fun2;
+}
+
+const abc = fun1();
+abc();
+
+output: 8
+        8
+*/
+
+//*********** */
+
+/*
+function fun1() {
+  let a = 5;
+
+  function fun2() {
+    let a = 9;
+    console.log(a);
+
+    function fun3() {
+      console.log(a);
+    }
+    fun3();
+  }
+  a = 8;
+  return fun2;
+}
+
+const abc = fun1();
+abc();
+
+output: 9
+        9
+*/
+
+// This will return 9 fun3 will log for variable in its scope , if not find look for variable in its parent scope that is fun2 and here it is 9.And it will return 9. If there were no variable in fun2 also it will search in fun1 and then then print.
