@@ -201,3 +201,32 @@ fun1();
           7
           9
 */
+
+//***********
+
+/*
+function fun1() {
+  let a = 5;
+  let b = 6;
+  let c = 7;
+
+  function fun2() {
+    console.log(a);
+    console.log(b);
+    console.log(c);
+  }
+  a = 8;
+  b = 99;
+  c = 100;
+
+  return fun2;
+}
+
+const abc = fun1();
+abc();
+
+// output:
+          8
+          99
+          100
+*/
