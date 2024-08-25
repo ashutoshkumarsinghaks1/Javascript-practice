@@ -151,3 +151,53 @@ output: 9
 */
 
 // This will return 9 fun3 will log for variable in its scope , if not find look for variable in its parent scope that is fun2 and here it is 9.And it will return 9. If there were no variable in fun2 also it will search in fun1 and then then print.
+//************
+/*
+function fun1() {
+  let a = 5;
+  console.log(a);
+
+  function fun2() {
+    let a = 6;
+    console.log(a);
+
+    function fun3() {
+      const a = 30;
+      console.log(a);
+
+      function fun4() {
+        console.log(a);
+
+        function fun5() {
+          var a = 7;
+          console.log(a);
+
+          function fun6() {
+            console.log(a);
+
+            function fun7() {
+              let a = 9;
+              console.log(a);
+            }
+            fun7();
+          }
+          fun6();
+        }
+        fun5();
+      }
+      fun4();
+    }
+    fun3();
+  }
+  fun2();
+}
+fun1();
+
+// output:5
+          6
+          30
+          30
+          7
+          7
+          9
+*/
