@@ -97,7 +97,9 @@ output: 8
 
 */
 
-// It is returning "8" because function fun2 will return function along with its lexical environment parent environment . It will not return value of "a"it will return reference of "a" . That's why console.log(a) is returning value of a = 8 not a =5 even if it is after console.log(a). As a = 5; and a =8; is in the same parent environment.
+// It is returning "8" because function fun2 will return function along with its lexical environment parent environment .
+It will not return value of "a"it will return reference of "a" . That's why console.log(a) is returning value of a = 8 not a =5 even 
+  if it is after console.log(a). As a = 5; and a =8; is in the same parent environment.
 
 //*********** */
 
@@ -150,7 +152,8 @@ output: 9
         9
 */
 
-// This will return 9 fun3 will log for variable in its scope , if not find look for variable in its parent scope that is fun2 and here it is 9.And it will return 9. If there were no variable in fun2 also it will search in fun1 and then then print.
+// This will return 9 fun3 will log for variable in its scope , if not find look for variable in its parent scope that
+  is fun2 and here it is 9.And it will return 9. If there were no variable in fun2 also it will search in fun1 and then then print.
 //************
 /*
 function fun1() {
@@ -229,4 +232,100 @@ abc();
           8
           99
           100
+*/
+
+//************************************************************************* */
+
+// "this" keyword in Javascript @Yoshita Jain Youtube
+  
+// In javascript , the "this" keyword always refers to an object.
+
+//Some different ways to use "this" keyword
+//1.By itself
+//2.Inside object method
+//3.inside function
+
+// by itself
+/*
+
+console.log(this)
+
+output: 
+Window object
+
+*/
+
+//*************** */
+
+// inside object model.
+
+/*
+const obj = {
+  name: "Ashutosh",
+  lastName: "Singh",
+  fullName: function () {
+    return this;
+  },
+};
+
+console.log(obj.fullName())
+
+output:{name: 'Ashutosh', lastName: 'Singh', fullName: ƒ}
+        fullName
+        : 
+        ƒ ()
+        lastName
+        : 
+        "Singh"
+        name
+        : 
+        "Ashutosh"
+        [[Prototype]]
+        : 
+        Object
+*/
+
+/*
+const obj = {
+  name: "Ashutosh",
+  lastName: "Singh",
+  fullName: function () {
+    return this.name + " " + this.lastName;
+  },
+};
+
+console.log(obj.fullName())
+
+output: Ashutosh Singh
+*/
+
+//************ */
+
+// inside function
+
+/*
+function xyz() {
+  return this;
+}
+
+console.log(xyz());
+
+output: window object
+*/
+
+//Explaination: Again this will print "window" object. This will refer to object , Lekin yaha pe koi object nhi hai kewal ek function hai jo 
+.
+As "this" always refers to an object. Wo kya krega sbse bada jo object hai global object that is "window" object usko refer krega.
+
+// if we use " use strict" it will give undefined.
+
+/*
+"use strict";
+function xyz() {
+  return this;
+}
+
+console.log(xyz());
+
+output: undefined
 */
