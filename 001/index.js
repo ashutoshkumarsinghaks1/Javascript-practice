@@ -314,8 +314,7 @@ output: window object
 */
 
 //Explaination: Again this will print "window" object. This will refer to object , Lekin yaha pe koi object nhi hai kewal ek function hai jo 
-.
-As "this" always refers to an object. Wo kya krega sbse bada jo object hai global object that is "window" object usko refer krega.
+.As "this" always refers to an object. Wo kya krega sbse bada jo object hai global object that is "window" object usko refer krega.
 
 // if we use " use strict" it will give undefined.
 
@@ -328,4 +327,199 @@ function xyz() {
 console.log(xyz());
 
 output: undefined
+*/
+//******************************************************** */
+
+// call apply bind in JavaScript @Yoshita Jain Youtube
+
+/*
+const person1 = {
+  FName: "Satya",
+  LName: "LastName",
+  fullName: function () {
+    return this.FName + " " + this.LName;
+  },
+};
+
+const person2 = {
+  FName: "Aman",
+  LName: "Surname",
+  fullName: function () {
+    return this.FName + " " + this.LName;
+  },
+};
+*/
+
+//So we have person1 object and person2 object both have same method name that is "fullName" so here we have 2 object person1 and person2 suppose you have n object .Then it is not correct apprach to write same method repeatedly multiple times for different object . Here comes "Call" into picture .
+
+// So with the help of "call" method we can use object of one method into different onject.
+
+/*
+const person1 = {
+  FName: "Satya",
+  LName: "LastName",
+  fullName: function () {
+    return this.FName + " " + this.LName;
+  },
+};
+
+const person2 = {
+  FName: "Aman",
+  LName: "Surname",
+};
+
+console.log(person1.fullName.call(person2));
+
+output: Aman Surname
+*/
+
+//********* */
+//use hometown as parameter in function fullName
+
+/*
+const person1 = {
+  FName: "Satya",
+  LName: "LastName",
+  fullName: function (hometown) {
+    return this.FName + " " + this.LName + " " + hometown;
+  },
+};
+
+const person2 = {
+  FName: "Aman",
+  LName: "Surname",
+};
+
+console.log(person1.fullName.call(person2));
+
+output:Aman Surname undefined
+*/
+
+/*
+const person1 = {
+  FName: "Satya",
+  LName: "LastName",
+  fullName: function (hometown) {
+    return this.FName + " " + this.LName + " " + hometown;
+  },
+};
+
+const person2 = {
+    FName: "Aman",
+    LName: "Surname",
+  };
+  
+console.log(person1.fullName.call(person2,"Pune"))
+
+output: Aman Surname Pune
+*/
+
+/*
+const person1 = {
+    FName: "Satya",
+    LName: "LastName",
+    fullName: function (hometown ,country) {
+      return this.FName + " " + this.LName + " " + hometown + " "+ country;
+    },
+  };
+  
+  const person2 = {
+      FName: "Aman",
+      LName: "Surname",
+    };
+    
+  console.log(person1.fullName.call(person2,"Pune" ,"India"))
+  
+  output: Aman Surname Pune India
+
+*/
+
+//************* */
+
+//Apply
+
+// purpose of "call" and apply is almost same . But difference is how we pass arguments.In "call" method we pass arguments by comma seperated(person2,"Pune" ,"India") but in "apply" we pass arguments as as array (person ,["Pune", "India"])
+
+/*
+const person1 = {
+  FName: "Satya",
+  LName: "LastName",
+  fullName: function (hometown, country) {
+    return this.FName + " " + this.LName + " " + hometown + " " + country;
+  },
+};
+
+const person2 = {
+  FName: "Aman",
+  LName: "Surname",
+};
+
+console.log(person1.fullName.call(person2, "Pune", "India"));
+console.log(person1.fullName.apply(person2, ["Pune", "India"]));
+
+output:
+Aman Surname Pune India
+Aman Surname Pune India
+*/
+
+//************************ */
+
+//bind
+
+/*
+const person1 = {
+  FName: "Satya",
+  LName: "LastName",
+  fullName: function (hometown, country) {
+    return this.FName + " " + this.LName + " " + hometown + " " + country;
+  },
+};
+
+const person2 = {
+  FName: "Aman",
+  LName: "Surname",
+};
+
+console.log(person1.fullName.call(person2, "Pune", "India")); //call
+console.log(person1.fullName.apply(person2, ["Pune", "India"])); //apply
+
+const result = person1.fullName.bind(person2, "Pune", "India"); //bind
+console.log(result);
+
+output:
+Aman Surname Pune India
+Aman Surname Pune India
+ƒ (hometown, country) {
+    return this.FName + " " + this.LName + " " + hometown + " " + country;
+  }
+*/
+
+/*
+const person1 = {
+  FName: "Satya",
+  LName: "LastName",
+  fullName: function (hometown, country) {
+    return this.FName + " " + this.LName + " " + hometown + " " + country;
+  },
+};
+
+const person2 = {
+  FName: "Aman",
+  LName: "Surname",
+};
+
+console.log(person1.fullName.call(person2, "Pune", "India")); //call
+console.log(person1.fullName.apply(person2, ["Pune", "India"])); //apply
+
+const result = person1.fullName.bind(person2, "Pune", "India"); //bind
+console.log(result);
+console.log(result());
+
+output:
+Aman Surname Pune India
+Aman Surname Pune India
+ƒ (hometown, country) {
+    return this.FName + " " + this.LName + " " + hometown + " " + country;
+  }
+Aman Surname Pune India
 */
